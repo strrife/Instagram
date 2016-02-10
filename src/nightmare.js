@@ -13,24 +13,29 @@ class Instagram {
         this.nightmare = Nightmare({ width: 1400, height: 1000, 'use-content-size': true });
     }
 
-    login(username, password){
+    ajaxRequest(endpoint, data){
         return co(function * (){
-            yield this.nightmare
-                .goto('https://instagram.com/accounts/login/')
-                .evaluate(function(config){
+            yield this.nightmare.goto("https://www.instagram.com/")
+                .evaluate(function(endpoint, data){
                     $.ajax({
-                        'url' : '/accounts/login/ajax/',
+                        'url' : endpoint,
                         'type' : 'post',
-                        'data' : config,
-                        success : function(r){
-                            document.title = "LOADED";
-                        }
+                        'data' : data,
+                        'ascync': false
                     });
-                }, { username, password })
-                .wait(function(){
-                    return document.title === 'LOADED';
-                });
+                }, endpoint, data);
         }.bind(this));
+    }
+
+    login(username, password){
+        return this.ajaxRequest('/accounts/login/ajax/', {username, password})
+    }
+
+    comment(id, text){
+        return this.ajaxRequest(`/web/comments/${id}/add/`, {comment_text: text});
+    }
+    like(id, text){
+        return this.ajaxRequest(`/web/likes/${id}/like/`, {});
     }
 }
 
