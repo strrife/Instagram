@@ -1,0 +1,25 @@
+{
+  "name": "web-not-bombs-instagram",
+  "version": "1.0.0",
+  "description": "Instagram automatization examples for WebNotBombs Feb'2016",
+  "main": "nightmare.js",
+  "dependencies": {
+    "co": "^4.6.0",
+    "nightmare": "^2.1.6",
+    "vo": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strrife/Instagram.git"
+  },
+  "author": "Alexander Mikhalchenko <strrife@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/strrife/Instagram/issues"
+  },
+  "homepage": "https://github.com/strrife/Instagram#readme"
+}
