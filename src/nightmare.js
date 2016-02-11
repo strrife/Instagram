@@ -34,7 +34,8 @@ class Instagram {
     comment(id, text){
         return this.ajaxRequest(`/web/comments/${id}/add/`, {comment_text: text});
     }
-    like(id, text){
+
+    like(id){
         return this.ajaxRequest(`/web/likes/${id}/like/`, {});
     }
 }

@@ -3,7 +3,7 @@
  */
 var Instagram = require('./src/nightmare');
 var client = new Instagram();
-const util = require('util');
+var start = process.hrtime();
 
 client
     .login(process.env.INSTAGRAM_USER, process.env.INSTAGRAM_PASS)
@@ -12,7 +12,8 @@ client
         client.comment(process.argv[2], process.argv[3])
             .then(() => {
                 console.log('Commented!');
-                console.log(util.inspect(process.memoryUsage()));
+                var diff = process.hrtime(start);
+                console.log('commenting took %d nanoseconds', diff[0] * 1e9 + diff[1]);
             })
             .catch(e => console.log(e));
     });
